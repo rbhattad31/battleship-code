@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleShip.UI", "BattleShip.UI\BattleShip.UI.csproj", "{63998525-A24E-447F-B35F-76096BFB8D6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bradsol.BattleShip.UI", "Bradsol.BattleShip.UI\Bradsol.BattleShip.UI.csproj", "{63998525-A24E-447F-B35F-76096BFB8D6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleShip.BLL", "BattleShip.BLL\BattleShip.BLL.csproj", "{F8B43DA0-2853-4B79-8BFE-B25C658C4A9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bradsol.BattleShip.BL", "Bradsol.BattleShip.BL\Bradsol.BattleShip.BL.csproj", "{F8B43DA0-2853-4B79-8BFE-B25C658C4A9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battleship.Tests", "Battleship.Tests\Battleship.Tests.csproj", "{997627A8-9CB3-4615-943A-1D9B2DB036B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bradsol.Battleship.Tests", "Bradsol.Battleship.Tests\Bradsol.Battleship.Tests.csproj", "{997627A8-9CB3-4615-943A-1D9B2DB036B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3416C7C-E4D4-4C73-B75A-AFE4681FA3D9}
 	EndGlobalSection
 EndGlobal
