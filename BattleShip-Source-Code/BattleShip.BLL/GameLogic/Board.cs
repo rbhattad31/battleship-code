@@ -19,7 +19,7 @@ namespace BattleShip.BLL.GameLogic
         public Board()
         {
             ShotHistory = new Dictionary<Coordinate, ShotHistory>();
-            Ships = new Ship[5];
+            Ships = new Ship[1];
             _currentShipIndex = 0;
         }
 

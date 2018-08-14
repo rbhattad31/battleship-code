@@ -13,16 +13,16 @@ namespace BattleShip.BLL.GameLogic
         {
             switch (type)
             {
-                case ShipType.Destroyer:
-                    return new Ship(ShipType.Destroyer, 2);
-                case ShipType.Cruiser:
-                    return new Ship(ShipType.Cruiser, 3);
-                case ShipType.Submarine:
-                    return new Ship(ShipType.Submarine, 3);
-                case ShipType.Battleship:
-                    return new Ship(ShipType.Battleship, 3);
+                //case ShipType.Destroyer:
+                //    return new Ship(ShipType.Destroyer, 2);
+                //case ShipType.Cruiser:
+                //    return new Ship(ShipType.Cruiser, 3);
+                //case ShipType.Submarine:
+                //    return new Ship(ShipType.Submarine, 3);
+                //case ShipType.Battleship:
+                //    return new Ship(ShipType.Battleship, 3);
                 default:
-                    return new Ship(ShipType.Carrier, 5);
+                    return new Ship(ShipType.Battleship, 3);
             }
         }
     }
