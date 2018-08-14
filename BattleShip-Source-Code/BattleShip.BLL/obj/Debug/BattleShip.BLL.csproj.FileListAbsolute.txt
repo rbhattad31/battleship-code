@@ -1,0 +1,6 @@
+C:\Users\BRADSOL\Downloads\The-Battle-Ship\The-Battle-Ship-master\BattleShip.BLL\bin\Debug\BattleShip.BLL.dll
+C:\Users\BRADSOL\Downloads\The-Battle-Ship\The-Battle-Ship-master\BattleShip.BLL\bin\Debug\BattleShip.BLL.pdb
+C:\Users\BRADSOL\Downloads\The-Battle-Ship\The-Battle-Ship-master\BattleShip.BLL\obj\Debug\BattleShip.BLL.csprojResolveAssemblyReference.cache
+C:\Users\BRADSOL\Downloads\The-Battle-Ship\The-Battle-Ship-master\BattleShip.BLL\obj\Debug\BattleShip.BLL.csproj.CoreCompileInputs.cache
+C:\Users\BRADSOL\Downloads\The-Battle-Ship\The-Battle-Ship-master\BattleShip.BLL\obj\Debug\BattleShip.BLL.dll
+C:\Users\BRADSOL\Downloads\The-Battle-Ship\The-Battle-Ship-master\BattleShip.BLL\obj\Debug\BattleShip.BLL.pdb
