@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ControlInput.cs" />
     <Compile Include="ControlOutput.cs" />
+    <Compile Include="ExceptionHelper.cs" />
     <Compile Include="GameFlow.cs" />
     <Compile Include="GameSetup.cs" />
     <Compile Include="Players.cs" />

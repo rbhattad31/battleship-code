@@ -14,6 +14,9 @@ namespace Bradsol.BattleShip.UI
     {
         static int counttime = 0;
 
+        /// <summary>
+        /// Displays the screen welcoming to the game, only displayed at the start of the game
+        /// </summary>
         public static void ShowFlashScreen()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -37,6 +40,9 @@ namespace Bradsol.BattleShip.UI
             }
         }
 
+        /// <summary>
+        /// Displays the header the Battleship game
+        /// </summary>
         public static void ShowHeader()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -45,6 +51,10 @@ namespace Bradsol.BattleShip.UI
             Console.ForegroundColor = ConsoleColor.White;
         }
 
+        /// <summary>
+        /// Displays all the players
+        /// </summary>
+        /// <param name="player"></param>
         public static void ShowAllPlayer(Player[] player)
         {
             string str = "Player 1: " + player[0].Name + "(Win: " + player[0].Win + ")\t Player 2: " + player[1].Name + "(win: " + player[1].Win + ")";
@@ -53,6 +63,10 @@ namespace Bradsol.BattleShip.UI
             Console.WriteLine("");
         }
 
+        /// <summary>
+        /// Displays the Player turn
+        /// </summary>
+        /// <param name="player"></param>
         public static void ShowWhoseTurn(Player player)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -103,6 +117,10 @@ namespace Bradsol.BattleShip.UI
             return result;
         }
 
+        /// <summary>
+        /// Displays the game history
+        /// </summary>
+        /// <param name="player"></param>
         public static void DrawHistory(Player player)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -145,6 +163,12 @@ namespace Bradsol.BattleShip.UI
             Console.WriteLine("");
         }
 
+        /// <summary>
+        /// Displays the results of the shot fired
+        /// </summary>
+        /// <param name="shotresponse"></param>
+        /// <param name="c"></param>
+        /// <param name="playername"></param>
         public static void ShowShotResult(FireShotResponse shotresponse, Coordinate c, string playername)
         {
             String str = "";
@@ -196,6 +220,10 @@ namespace Bradsol.BattleShip.UI
             obj.Add(player1);
         }
 
+        /// <summary>
+        /// Clears screen, displays the header and displays the players
+        /// </summary>
+        /// <param name="player"></param>
         public static void ResetScreen(Player[] player)
         {
             Console.Clear();

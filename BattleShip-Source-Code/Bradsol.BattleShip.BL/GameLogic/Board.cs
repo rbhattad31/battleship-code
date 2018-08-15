@@ -27,57 +27,78 @@ namespace Bradsol.BattleShip.BL.GameLogic
         {
             var response = new FireShotResponse();
 
-            // is this coordinate on the board?
-            if (!IsValidCoordinate(coordinate))
+            try
             {
-                response.ShotStatus = ShotStatus.Invalid;
-                return response;
-            }
+                // is this coordinate on the board?
+                if (!IsValidCoordinate(coordinate))
+                {
+                    response.ShotStatus = ShotStatus.Invalid;
+                    return response;
+                }
 
-            // did they already try this position?
-            if (ShotHistory.ContainsKey(coordinate))
+                // did they already try this position?
+                if (ShotHistory.ContainsKey(coordinate))
+                {
+                    response.ShotStatus = ShotStatus.Duplicate;
+                    return response;
+                }
+
+                CheckShipsForHit(coordinate, response);
+                CheckForVictory(response);
+            }
+            catch (Exception)
             {
-                response.ShotStatus = ShotStatus.Duplicate;
-                return response;
+                throw;
             }
-
-            CheckShipsForHit(coordinate, response);
-            CheckForVictory(response);
 
             return response;            
         }
 
         public ShotHistory CheckCoordinate(Coordinate coordinate)
         {
-            if(ShotHistory.ContainsKey(coordinate))
+            try
             {
-                return ShotHistory[coordinate];
+                if (ShotHistory.ContainsKey(coordinate))
+                {
+                    return ShotHistory[coordinate];
+                }
+                else
+                {
+                    return BL.Responses.ShotHistory.Unknown;
+                }
             }
-            else
+            catch (Exception)
             {
-                return BL.Responses.ShotHistory.Unknown;
+                throw;
             }
         }
 
         public ShipPlacement PlaceShip(PlaceShipRequest request)
         {
-            if (_currentShipIndex > 4)
-                throw new Exception("You can not add another ship, 5 is the limit!");
-
-            if (!IsValidCoordinate(request.Coordinate))
-                return ShipPlacement.NotEnoughSpace;
-
-            Ship newShip = ShipCreator.CreateShip(request.ShipType);
-            switch (request.Direction)
+            try
             {
-                case ShipDirection.Down:
-                    return PlaceShipDown(request.Coordinate, newShip);
-                case ShipDirection.Up:
-                    return PlaceShipUp(request.Coordinate, newShip);
-                case ShipDirection.Left:
-                    return PlaceShipLeft(request.Coordinate, newShip);
-                default:
-                    return PlaceShipRight(request.Coordinate, newShip);
+                if (_currentShipIndex > 4)
+                    throw new Exception("You can not add another ship, 5 is the limit!");
+
+                if (!IsValidCoordinate(request.Coordinate))
+                    return ShipPlacement.NotEnoughSpace;
+
+                Ship newShip = ShipCreator.CreateShip(request.ShipType);
+                switch (request.Direction)
+                {
+                    case ShipDirection.Down:
+                        return PlaceShipDown(request.Coordinate, newShip);
+                    case ShipDirection.Up:
+                        return PlaceShipUp(request.Coordinate, newShip);
+                    case ShipDirection.Left:
+                        return PlaceShipLeft(request.Coordinate, newShip);
+                    default:
+                        return PlaceShipRight(request.Coordinate, newShip);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 

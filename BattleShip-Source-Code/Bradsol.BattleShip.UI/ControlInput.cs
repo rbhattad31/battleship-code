@@ -12,6 +12,10 @@ namespace Bradsol.BattleShip.UI
 {
     public class ControlInput
     {
+        /// <summary>
+        /// Gets the names entered by the players
+        /// </summary>
+        /// <returns></returns>
         public static string[] GetNameFromUser()
         {
             string player1 = "";
@@ -32,6 +36,11 @@ namespace Bradsol.BattleShip.UI
             return new string[] { player1, player2 };
         }
 
+        /// <summary>
+        /// Gets the direction selected by the player
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <returns></returns>
         public static ShipDirection getDirection(string direction)
         {
             switch (direction.ToLower())
@@ -48,20 +57,34 @@ namespace Bradsol.BattleShip.UI
 
         }
 
+        /// <summary>
+        /// Gets the location selected by the user
+        /// </summary>
+        /// <param name="ShipType"></param>
+        /// <returns></returns>
         public static PlaceShipRequest GetLocationFromUser(string ShipType)
         {
             PlaceShipRequest result = null;
-            do
-            {
-                Console.Write("- " + ShipType + ": ");
-                result = GetLocation(Console.ReadLine());
-                if (result is null) ;
-                else return result;
 
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid input. Please input location and direiction. Ex:) a2, r");
-                Console.ForegroundColor = ConsoleColor.White;
-            } while (result is null);
+            try
+            {
+                do
+                {
+                    Console.Write("- " + ShipType + ": ");
+                    result = GetLocation(Console.ReadLine());
+                    if (result is null) ;
+                    else return result;
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid input. Please input location and direction. Ex:) a2, r");
+                    Console.ForegroundColor = ConsoleColor.White;
+                } while (result is null);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
             return result;
         }
 
@@ -73,78 +96,96 @@ namespace Bradsol.BattleShip.UI
             int x;
             int y;
 
-            if (location.Split(',').Length == 2)
+            try
             {
-                if (location.Split(',')[0].Trim().Length > 1)
+                if (location.Split(',').Length == 2)
                 {
-                    strX = location.Split(',')[0].Trim().Substring(0, 1);
-                    strY = location.Split(',')[0].Trim().Substring(1);
-                    strDirection = location.Split(',')[1].ToLower().Trim();
-
-                    x = GetNumberFromLetter(strX);
-                    if (x > 0 && x < 11 && int.TryParse(strY, out y) && y > 0 && y < 11
-                        && (strDirection == "l"
-                        || strDirection == "r"
-                        || strDirection == "u"
-                        || strDirection == "d"))
+                    if (location.Split(',')[0].Trim().Length > 1)
                     {
-                        PlaceShipRequest ShipToPlace = new PlaceShipRequest();
-                        ShipToPlace.Direction = getDirection(strDirection);
-                        ShipToPlace.Coordinate = new Coordinate(x, y);
-                        return ShipToPlace;
+                        strX = location.Split(',')[0].Trim().Substring(0, 1);
+                        strY = location.Split(',')[0].Trim().Substring(1);
+                        strDirection = location.Split(',')[1].ToLower().Trim();
+
+                        x = GetNumberFromLetter(strX);
+                        if (x > 0 && x < 11 && int.TryParse(strY, out y) && y > 0 && y < 11
+                            && (strDirection == "l"
+                            || strDirection == "r"
+                            || strDirection == "u"
+                            || strDirection == "d"))
+                        {
+                            PlaceShipRequest ShipToPlace = new PlaceShipRequest();
+                            ShipToPlace.Direction = getDirection(strDirection);
+                            ShipToPlace.Coordinate = new Coordinate(x, y);
+                            return ShipToPlace;
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
+                throw;
+            }
+
             return null;
         }
 
+        /// <summary>
+        /// Gets the location of the shot fired from the player
+        /// </summary>
+        /// <returns></returns>
         public static Coordinate GetShotLocationFromUser()
         {
             string result = "";
             int x;
             int y;
-            while (true)
+            try
             {
-                Console.Write("Which location do you want to shot? ");
-                result = Console.ReadLine();
-                if (result.Trim().Length > 1)
+                while (true)
                 {
-                    x = GetNumberFromLetter(result.Substring(0, 1));
-                    if (x > 0 && int.TryParse(result.Substring(1), out y))
+                    Console.Write("Which location do you want to shot? ");
+                    result = Console.ReadLine();
+                    if (result.Trim().Length > 1)
                     {
-                        return new Coordinate(x, y);
+                        x = GetNumberFromLetter(result.Substring(0, 1));
+                        if (x > 0 && int.TryParse(result.Substring(1), out y))
+                        {
+                            return new Coordinate(x, y);
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        public static Coordinate GetShotLocationFromComputer(Board victimboard, GameLevel gamelevel)
-        {
-            if (gamelevel == GameLevel.Hard)
-                if (GetRandom.r.Next(1, 100) <= 60)
-                    return GetRightLocationToShot(victimboard);
-            if (gamelevel == GameLevel.Medium)
-                if (GetRandom.r.Next(1, 100) <= 30)
-                    return GetRightLocationToShot(victimboard);
-
-            return new Coordinate(GetRandom.GetLocation(), GetRandom.GetLocation());
-        }
-
+        /// <summary>
+        /// Gets the location of the short fired
+        /// </summary>
+        /// <param name="victimboard"></param>
+        /// <returns></returns>
         static Coordinate GetRightLocationToShot(Board victimboard)
         {
-            List<Coordinate> tmpList = new List<Coordinate> { };
-            for (int i = 0; i < victimboard.Ships.Length; i++)
+            try
             {
-                Ship tmpShip = victimboard.Ships[i];
-                for (int j = 0; j < tmpShip.BoardPositions.Length; j++)
+                List<Coordinate> tmpList = new List<Coordinate> { };
+                for (int i = 0; i < victimboard.Ships.Length; i++)
                 {
-                    if (victimboard.CheckCoordinate(tmpShip.BoardPositions[j]) == ShotHistory.Unknown)
-                        tmpList.Add(tmpShip.BoardPositions[j]);
+                    Ship tmpShip = victimboard.Ships[i];
+                    for (int j = 0; j < tmpShip.BoardPositions.Length; j++)
+                    {
+                        if (victimboard.CheckCoordinate(tmpShip.BoardPositions[j]) == ShotHistory.Unknown)
+                            tmpList.Add(tmpShip.BoardPositions[j]);
+                    }
                 }
+
+                return tmpList[GetRandom.r.Next(0, tmpList.Count - 1)];
             }
-
-            return tmpList[GetRandom.r.Next(0, tmpList.Count - 1)];
-
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         static int GetNumberFromLetter(string letter)
@@ -188,6 +229,10 @@ namespace Bradsol.BattleShip.UI
             return result;
         }
 
+        /// <summary>
+        /// Asks players if want to replay or quit
+        /// </summary>
+        /// <returns></returns>
         public static bool CheckQuit()
         {
             Console.WriteLine("Press F5 to replay or any key to quit...");
