@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameLogic\Board.cs" />
-    <Compile Include="GameLogic\GameLevel.cs" />
     <Compile Include="GameLogic\Player.cs" />
     <Compile Include="GameLogic\ShipCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
