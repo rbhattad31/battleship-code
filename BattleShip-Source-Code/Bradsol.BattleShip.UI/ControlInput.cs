@@ -187,6 +187,11 @@ namespace Bradsol.BattleShip.UI
                 throw;
             }
         }
+        /// <summary>
+        /// Takes Letter and returns Number
+        /// </summary>
+        /// <param name="letter"></param>
+        /// <returns></returns>
 
         static int GetNumberFromLetter(string letter)
         {
@@ -217,12 +222,6 @@ namespace Bradsol.BattleShip.UI
                 case "h":
                     result = 8;
                     break;
-                case "i":
-                    result = 9;
-                    break;
-                case "j":
-                    result = 10;
-                    break;
                 default:
                     break;
             }
@@ -230,12 +229,12 @@ namespace Bradsol.BattleShip.UI
         }
 
         /// <summary>
-        /// Asks players if want to replay or quit
+        /// Display Thank you message.
         /// </summary>
         /// <returns></returns>
         public static bool CheckQuit()
         {
-            Console.WriteLine("Press F5 to replay or any key to quit...");
+            Console.WriteLine("Thank you.!..");
             return Console.ReadKey().Key == ConsoleKey.F5;
         }
     }

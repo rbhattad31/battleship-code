@@ -105,12 +105,6 @@ namespace Bradsol.BattleShip.UI
                 case 8:
                     result = "H";
                     break;
-                case 9:
-                    result = "I";
-                    break;
-                case 10:
-                    result = "J";
-                    break;
                 default:
                     break;
             }
@@ -126,19 +120,19 @@ namespace Bradsol.BattleShip.UI
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             Console.Write("  ");
-            for (int y = 1; y <= 10; y++)
+            for (int y = 1; y <= 8; y++)
             {
                 Console.Write(y);
                 Console.Write(" ");
             }
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
-            for (int x = 1; x <= 10; x++)
+            for (int x = 1; x <= 8; x++)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(GetLetterFromNumber(x) + " ");
                 Console.ForegroundColor = ConsoleColor.White;
-                for (int y = 1; y <= 10; y++)
+                for (int y = 1; y <= 8; y++)
                 {
                     //Console.Write(y);
                     ShotHistory history = player.PlayerBoard.CheckCoordinate(new Coordinate(x, y));
@@ -197,11 +191,6 @@ namespace Bradsol.BattleShip.UI
                 case ShotStatus.Victory:
                     Console.ForegroundColor = ConsoleColor.Green;
                     str = "Shot location: " + GetLetterFromNumber(c.XCoordinate) + c.YCoordinate.ToString() + "\t result: Hit and Sunk, " + shotresponse.ShipImpacted + "! \n\n";
-                    str += "       ******\n";
-                    str += "       ******\n";
-                    str += "        **** \n";
-                    str += "         **  \n";
-                    str += "         **  \n";
                     str += "       ******\n";
                     str +="Game Over, " + playername + " wins!";                    
                     break;

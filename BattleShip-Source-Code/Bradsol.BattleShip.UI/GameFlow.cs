@@ -30,33 +30,31 @@ namespace Bradsol.Bradsol.BattleShip.UI
                 // register players and setup the game
                 GameSetup GameSetup = new GameSetup(players);
                 GameSetup.Setup();
-
+                // setup the board
+                GameSetup.SetBoard();
+                FireShotResponse shotresponse;
                 do
                 {
-                    // setup the board
-                    GameSetup.SetBoard();
-                    FireShotResponse shotresponse;
-                    do
+                    ControlOutput.ResetScreen(new Player[] { players.Player1, players.Player2 });
+                    ControlOutput.ShowWhoseTurn(players.IsPlayer1 ? players.Player1 : players.Player2);
+                    ControlOutput.DrawHistory(players.IsPlayer1 ? players.Player2 : players.Player1);
+
+                    Coordinate ShotPoint = new Coordinate(1, 1);
+                    shotresponse = Shot(players.IsPlayer1 ? players.Player2 : players.Player1, players.IsPlayer1 ? players.Player1 : players.Player2, out ShotPoint);
+
+                    ControlOutput.ResetScreen(new Player[] { players.Player1, players.Player2 });
+                    ControlOutput.ShowWhoseTurn(players.IsPlayer1 ? players.Player1 : players.Player2);
+                    ControlOutput.DrawHistory(players.IsPlayer1 ? players.Player2 : players.Player1);
+                    ControlOutput.ShowShotResult(shotresponse, ShotPoint, players.IsPlayer1 ? players.Player1.Name : players.Player2.Name);
+                    if (shotresponse.ShotStatus != ShotStatus.Victory)
                     {
-                        ControlOutput.ResetScreen(new Player[] { players.Player1, players.Player2 });
-                        ControlOutput.ShowWhoseTurn(players.IsPlayer1 ? players.Player1 : players.Player2);
-                        ControlOutput.DrawHistory(players.IsPlayer1 ? players.Player2 : players.Player1);
-                        Coordinate ShotPoint = new Coordinate(1, 1);
-                        shotresponse = Shot(players.IsPlayer1 ? players.Player2 : players.Player1, players.IsPlayer1 ? players.Player1 : players.Player2, out ShotPoint);
+                        Console.WriteLine("Press any key to continue to switch to " + (players.IsPlayer1 ? players.Player2.Name : players.Player1.Name));
+                        players.IsPlayer1 = !players.IsPlayer1;
+                        Console.ReadKey();
+                    }
+                } while (shotresponse.ShotStatus != ShotStatus.Victory);
 
-                        ControlOutput.ResetScreen(new Player[] { players.Player1, players.Player2 });
-                        ControlOutput.ShowWhoseTurn(players.IsPlayer1 ? players.Player1 : players.Player2);
-                        ControlOutput.DrawHistory(players.IsPlayer1 ? players.Player2 : players.Player1);
-                        ControlOutput.ShowShotResult(shotresponse, ShotPoint, players.IsPlayer1 ? players.Player1.Name : players.Player2.Name);
-                        if (shotresponse.ShotStatus != ShotStatus.Victory)
-                        {
-                            Console.WriteLine("Press any key to continue to switch to " + (players.IsPlayer1 ? players.Player2.Name : players.Player1.Name));
-                            players.IsPlayer1 = !players.IsPlayer1;
-                            Console.ReadKey();
-                        }
-                    } while (shotresponse.ShotStatus != ShotStatus.Victory);
-
-                } while (ControlInput.CheckQuit());
+                ControlInput.CheckQuit();
             }
             catch (Exception)
             {
