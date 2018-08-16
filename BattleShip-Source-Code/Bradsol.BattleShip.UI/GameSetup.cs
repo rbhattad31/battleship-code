@@ -58,7 +58,7 @@ namespace Bradsol.BattleShip.UI
 
                 _players.Player2.PlayerBoard = new Board();
                 PlaceShipOnBoard(_players.Player2);
-                Console.WriteLine("All ship were placed successfull! Press any key to continue...");
+                Console.WriteLine("Battleship have been placed! Press any key to continue...");
                 Console.ReadKey();
             }
             catch (Exception)

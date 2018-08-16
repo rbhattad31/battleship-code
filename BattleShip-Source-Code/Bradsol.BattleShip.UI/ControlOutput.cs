@@ -20,7 +20,7 @@ namespace Bradsol.BattleShip.UI
         public static void ShowFlashScreen()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("Welcome to The Battleship Game!!!");
+            Console.Write("Welcome to Bradsol Battleship Game!!!");
             Console.Write($"{ Environment.NewLine }================================={ Environment.NewLine }");
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -46,7 +46,7 @@ namespace Bradsol.BattleShip.UI
         public static void ShowHeader()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("THE BATTLESHIP GAME!!!");
+            Console.Write("THE BRADSOL BATTLESHIP GAME!!!");
             Console.Write($"{ Environment.NewLine }======================{ Environment.NewLine }");
             Console.ForegroundColor = ConsoleColor.White;
         }

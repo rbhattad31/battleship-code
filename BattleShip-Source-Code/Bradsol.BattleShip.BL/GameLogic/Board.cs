@@ -25,9 +25,11 @@ namespace Bradsol.BattleShip.BL.GameLogic
             Ships = new Ship[1];
             _currentShipIndex = 0;
         }
+
         /// <summary>
         /// Method gives Shot Responce
         /// </summary>
+        /// <param name="Coordinate"></param>
         public FireShotResponse FireShot(Coordinate coordinate)
         {
             var response = new FireShotResponse();
