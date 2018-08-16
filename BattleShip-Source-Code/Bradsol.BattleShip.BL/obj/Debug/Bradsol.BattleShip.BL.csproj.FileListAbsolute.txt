@@ -4,3 +4,9 @@ D:\Battleship\BattleShip-Source-Code\Bradsol.BattleShip.BL\bin\Debug\Bradsol.Bat
 D:\Battleship\BattleShip-Source-Code\Bradsol.BattleShip.BL\bin\Debug\Bradsol.BattleShip.BL.pdb
 D:\Battleship\BattleShip-Source-Code\Bradsol.BattleShip.BL\obj\Debug\Bradsol.BattleShip.BL.dll
 D:\Battleship\BattleShip-Source-Code\Bradsol.BattleShip.BL\obj\Debug\Bradsol.BattleShip.BL.pdb
+C:\battleship-code\BattleShip-Source-Code\Bradsol.BattleShip.BL\bin\Debug\Bradsol.BattleShip.BL.dll
+C:\battleship-code\BattleShip-Source-Code\Bradsol.BattleShip.BL\bin\Debug\Bradsol.BattleShip.BL.pdb
+C:\battleship-code\BattleShip-Source-Code\Bradsol.BattleShip.BL\obj\Debug\Bradsol.BattleShip.BL.csprojAssemblyReference.cache
+C:\battleship-code\BattleShip-Source-Code\Bradsol.BattleShip.BL\obj\Debug\Bradsol.BattleShip.BL.csproj.CoreCompileInputs.cache
+C:\battleship-code\BattleShip-Source-Code\Bradsol.BattleShip.BL\obj\Debug\Bradsol.BattleShip.BL.dll
+C:\battleship-code\BattleShip-Source-Code\Bradsol.BattleShip.BL\obj\Debug\Bradsol.BattleShip.BL.pdb

@@ -13,3 +13,17 @@ D:\Battleship\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\nunit.fr
 D:\Battleship\BattleShip-Source-Code\Bradsol.Battleship.Tests\obj\Debug\Bradsol.Battleship.Tests.csproj.CopyComplete
 D:\Battleship\BattleShip-Source-Code\Bradsol.Battleship.Tests\obj\Debug\Bradsol.Battleship.Tests.dll
 D:\Battleship\BattleShip-Source-Code\Bradsol.Battleship.Tests\obj\Debug\Bradsol.Battleship.Tests.pdb
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\Bradsol.Battleship.Tests.dll
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\Bradsol.Battleship.Tests.pdb
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\Bradsol.BattleShip.BL.dll
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\Bradsol.BattleShip.UI.exe
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\nunit.framework.dll
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\Bradsol.BattleShip.BL.pdb
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\Bradsol.BattleShip.UI.pdb
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\Bradsol.BattleShip.UI.exe.config
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\bin\Debug\nunit.framework.xml
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\obj\Debug\Bradsol.Battleship.Tests.csprojAssemblyReference.cache
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\obj\Debug\Bradsol.Battleship.Tests.csproj.CoreCompileInputs.cache
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\obj\Debug\Bradsol.Battleship.Tests.csproj.CopyComplete
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\obj\Debug\Bradsol.Battleship.Tests.dll
+C:\battleship-code\BattleShip-Source-Code\Bradsol.Battleship.Tests\obj\Debug\Bradsol.Battleship.Tests.pdb
