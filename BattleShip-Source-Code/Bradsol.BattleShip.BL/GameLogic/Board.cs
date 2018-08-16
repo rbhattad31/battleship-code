@@ -7,6 +7,9 @@ using Bradsol.BattleShip.BL.Ships;
 
 namespace Bradsol.BattleShip.BL.GameLogic
 {
+    /// <summary>
+    /// This class contains designing board and ship placement
+    /// </summary>
     public class Board
     {
         public const int xCoordinator = 8;
@@ -22,7 +25,9 @@ namespace Bradsol.BattleShip.BL.GameLogic
             Ships = new Ship[1];
             _currentShipIndex = 0;
         }
-
+        /// <summary>
+        /// Method gives Shot Responce
+        /// </summary>
         public FireShotResponse FireShot(Coordinate coordinate)
         {
             var response = new FireShotResponse();
@@ -54,6 +59,9 @@ namespace Bradsol.BattleShip.BL.GameLogic
             return response;            
         }
 
+        /// <summary>
+        /// Method check the Coordinate
+        /// </summary>
         public ShotHistory CheckCoordinate(Coordinate coordinate)
         {
             try
@@ -73,6 +81,11 @@ namespace Bradsol.BattleShip.BL.GameLogic
             }
         }
 
+        /// <summary>
+        /// Mehtod places the Ship on Board
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public ShipPlacement PlaceShip(PlaceShipRequest request)
         {
             try
@@ -102,6 +115,11 @@ namespace Bradsol.BattleShip.BL.GameLogic
             }
         }
 
+        /// <summary>
+        /// checks victory
+        /// </summary>
+        /// <param name="response"></param>
+        /// <returns></returns>
         private void CheckForVictory(FireShotResponse response)
         {
             if (response.ShotStatus == ShotStatus.HitAndSunk)
@@ -111,35 +129,26 @@ namespace Bradsol.BattleShip.BL.GameLogic
                     response.ShotStatus = ShotStatus.Victory;
             }
         }
-
+        /// <summary>
+        /// Check if a ship is hit
+        /// </summary>
+        /// <param name="coordinate"></param>
+        /// /// <param name="response"></param>
         private void CheckShipsForHit(Coordinate coordinate, FireShotResponse response)
         {
             response.ShotStatus = ShotStatus.Miss;
-
-            foreach (var ship in Ships)
+            ShotStatus status = Ships[0].FireAtShip(coordinate);
+            switch (status)
             {
-                // no need to check sunk ships
-                if (ship.IsSunk)
-                    continue;
-
-                ShotStatus status = ship.FireAtShip(coordinate);
-
-                switch (status)
-                {
-                    case ShotStatus.HitAndSunk:
-                        response.ShotStatus = ShotStatus.HitAndSunk;
-                        response.ShipImpacted = ship.ShipName;
-                        ShotHistory.Add(coordinate, Responses.ShotHistory.Hit);
-                        break;
-                    case ShotStatus.Hit:
-                        response.ShotStatus = ShotStatus.Hit;
-                        response.ShipImpacted = ship.ShipName;
-                        ShotHistory.Add(coordinate, Responses.ShotHistory.Hit);
-                        break;
-                }
-
-                // if they hit something, no need to continue looping
-                if (status != ShotStatus.Miss)
+                case ShotStatus.HitAndSunk:
+                    response.ShotStatus = ShotStatus.HitAndSunk;
+                    response.ShipImpacted = Ships[0].ShipName;
+                    ShotHistory.Add(coordinate, Responses.ShotHistory.Hit);
+                    break;
+                case ShotStatus.Hit:
+                    response.ShotStatus = ShotStatus.Hit;
+                    response.ShipImpacted = Ships[0].ShipName;
+                    ShotHistory.Add(coordinate, Responses.ShotHistory.Hit);
                     break;
             }
 
@@ -149,12 +158,21 @@ namespace Bradsol.BattleShip.BL.GameLogic
             }
         }
 
+        /// <summary>
+        /// Method checks for Valid Coordinate
+        /// </summary>
+        /// <param name="coordinate"></param>
         private bool IsValidCoordinate(Coordinate coordinate)
         {
             return coordinate.XCoordinate >= 1 && coordinate.XCoordinate <= xCoordinator &&
             coordinate.YCoordinate >= 1 && coordinate.YCoordinate <= yCoordinator;
         }
 
+        /// <summary>
+        /// Places Ship to right on board
+        /// </summary>
+        /// <param name="coordinate"></param>
+        /// <param name="newShip"></param>
         private ShipPlacement PlaceShipRight(Coordinate coordinate, Ship newShip)
         {
             // y coordinate gets bigger
@@ -167,9 +185,6 @@ namespace Bradsol.BattleShip.BL.GameLogic
                 if (!IsValidCoordinate(currentCoordinate))
                     return ShipPlacement.NotEnoughSpace;
 
-                if (OverlapsAnotherShip(currentCoordinate))
-                    return ShipPlacement.Overlap;
-
                 newShip.BoardPositions[positionIndex] = currentCoordinate;
                 positionIndex++;
             }
@@ -178,6 +193,11 @@ namespace Bradsol.BattleShip.BL.GameLogic
             return ShipPlacement.Ok;
         }
 
+        /// <summary>
+        /// Places Ship to left on board
+        /// </summary>
+        /// <param name="coordinate"></param>
+        /// <param name="newShip"></param>
         private ShipPlacement PlaceShipLeft(Coordinate coordinate, Ship newShip)
         {
             // y coordinate gets smaller
@@ -191,9 +211,6 @@ namespace Bradsol.BattleShip.BL.GameLogic
                 if (!IsValidCoordinate(currentCoordinate))
                     return ShipPlacement.NotEnoughSpace;
 
-                if (OverlapsAnotherShip(currentCoordinate))
-                    return ShipPlacement.Overlap;
-
                 newShip.BoardPositions[positionIndex] = currentCoordinate;
                 positionIndex++;
             }
@@ -202,6 +219,11 @@ namespace Bradsol.BattleShip.BL.GameLogic
             return ShipPlacement.Ok;
         }
 
+        /// <summary>
+        /// Places Ship to up on board
+        /// </summary>
+        /// <param name="coordinate"></param>
+        /// <param name="newShip"></param>
         private ShipPlacement PlaceShipUp(Coordinate coordinate, Ship newShip)
         {
             // x coordinate gets smaller
@@ -215,9 +237,6 @@ namespace Bradsol.BattleShip.BL.GameLogic
                 if (!IsValidCoordinate(currentCoordinate))
                     return ShipPlacement.NotEnoughSpace;
 
-                if (OverlapsAnotherShip(currentCoordinate))
-                    return ShipPlacement.Overlap;
-
                 newShip.BoardPositions[positionIndex] = currentCoordinate;
                 positionIndex++;
             }
@@ -226,6 +245,11 @@ namespace Bradsol.BattleShip.BL.GameLogic
             return ShipPlacement.Ok;
         }
 
+        /// <summary>
+        /// Places Ship to down on board
+        /// </summary>
+        /// <param name="coordinate"></param>
+        /// <param name="newShip"></param>
         private ShipPlacement PlaceShipDown(Coordinate coordinate, Ship newShip)
         {
             // y coordinate gets bigger
@@ -238,9 +262,6 @@ namespace Bradsol.BattleShip.BL.GameLogic
 
                 if (!IsValidCoordinate(currentCoordinate))
                     return ShipPlacement.NotEnoughSpace;
-
-                if (OverlapsAnotherShip(currentCoordinate))
-                    return ShipPlacement.Overlap;
 
                 newShip.BoardPositions[positionIndex] = currentCoordinate;
                 positionIndex++;
@@ -256,18 +277,5 @@ namespace Bradsol.BattleShip.BL.GameLogic
             _currentShipIndex++;
         }
 
-        private bool OverlapsAnotherShip(Coordinate coordinate)
-        {
-            foreach (var ship in Ships)
-            {
-                if (ship != null)
-                {
-                    if (ship.BoardPositions.Contains(coordinate))
-                        return true;
-                }
-            }
-
-            return false;
-        }
     }
 }
