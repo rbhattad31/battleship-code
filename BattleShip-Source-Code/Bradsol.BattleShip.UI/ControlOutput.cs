@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bradsol.BattleShip.BL.GameLogic;
+﻿using Bradsol.BattleShip.BL.GameLogic;
 using Bradsol.BattleShip.BL.Requests;
 using Bradsol.BattleShip.BL.Responses;
-using Bradsol.BattleShip.BL.Ships;
+using System;
+using System.Collections.Generic;
 using System.Threading;
 namespace Bradsol.BattleShip.UI
 {

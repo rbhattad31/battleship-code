@@ -1,9 +1,6 @@
-﻿using Bradsol.BattleShip.BL.GameLogic;
-using Bradsol.BattleShip.BL.Requests;
-using Bradsol.BattleShip.BL.Responses;
-using Bradsol.BattleShip.BL.Ships;
-using NUnit.Framework;
+﻿using Bradsol.BattleShip.BL.Requests;
 using Bradsol.BattleShip.UI;
+using NUnit.Framework;
 
 namespace Bradsol.Battleship.Tests
 {
