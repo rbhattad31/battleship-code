@@ -28,7 +28,10 @@ namespace Bradsol.BattleShip.UI
                 string constructLog = $"Logged on - { DateTime.Now } { Environment.NewLine }" +
                     $"----------------------------{ Environment.NewLine } { ex.GetAllExceptionMessages() } { Environment.NewLine }" +
                     $"======================================================";
-
+                if (!Directory.Exists(@"C:/temp/"))
+                {
+                    Directory.CreateDirectory(@"C:/temp/");
+                }
                 if (fileExists)
                     File.AppendAllText(errorLogPath, $"{ Environment.NewLine } { Environment.NewLine }{ constructLog }");
                 else
